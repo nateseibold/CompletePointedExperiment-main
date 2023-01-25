@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "packages": {
+    "com.valvesoftware.unity.openvr": {
+      "tarball": {
+        "hash": "3ee6c452bc34",
+        "mtime": 1674584356299,
+        "size": 16210619,
+        "localPath": "C:\\Users\\VR Lab Admin\\Desktop\\CompletePointedExperiment-main\\Assets\\SteamVR\\OpenVRUnityXRPackage\\Editor\\com.valvesoftware.unity.openvr-1.1.4.tgz"
+      }
+    }
+  }
+}
