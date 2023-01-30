@@ -73,14 +73,9 @@ public class Pointer : MonoBehaviour
 
             else if(clickAction.GetStateDown(targetSource) && numClicks == 1)
             {
+                Instantiate(line, endPosition, line.transform.rotation);
                 endClick = endPosition;
                 numClicks = 0;
-                
-                GameObject[] allObjects = GameObject.FindGameObjectsWithTag("dot");
-                foreach(GameObject obj in allObjects)
-                {
-                    Destroy(obj);
-                }
 
                 StartCoroutine(newTrial());
             }
@@ -118,6 +113,16 @@ public class Pointer : MonoBehaviour
     {
         GameObject.Find("Camera").GetComponent<positionalData>().PrintLine(type);
         yield return new WaitForSeconds(1.5f);
+
+        if(type == 'L')
+        {
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag("dot");
+            foreach (GameObject obj in allObjects)
+            {
+                Destroy(obj);
+            }
+        }
+
         GameObject.Find("Camera").GetComponent<GameController>().startBall = true;
     }
 }

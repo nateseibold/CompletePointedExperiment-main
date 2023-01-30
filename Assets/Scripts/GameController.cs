@@ -52,6 +52,11 @@ public class GameController : MonoBehaviour
     public bool startBall = false;
     public int experimentNumber = 0;
 
+    //Trial Symbol Locations
+    private int trialLoc = 0;
+    private Vector3 topLoc = new Vector3(-9.58f, 4.68f, 12.44f);
+    private Vector3 bottomLoc = new Vector3(-2.264f, 0.563f, 2.307f);
+
     //Variables to be Set
     public string participantID;
     public float travelTime;
@@ -100,6 +105,19 @@ public class GameController : MonoBehaviour
         //Sets the new positions of the starting point and ending point, if the trial can be started
         if(startBall && experimentNumber < totalExperiments)
         {
+            if(trialLoc == 0)
+            {
+                hourglass.transform.position = topLoc;
+                cross.transform.position = topLoc;
+                trialLoc = 1;
+            }
+            else if (trialLoc == 1)
+            {
+                hourglass.transform.position = bottomLoc;
+                cross.transform.position = bottomLoc;
+                trialLoc = 0;
+            }
+
             experimentNumber++;
             startBall = false;
             pointer.SetActive(false);
