@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     public GameObject endingPoint;
     public GameObject pointer;
     public GameObject hourglass;
+    public GameObject cross;
 
     //VR Action Variables
     public SteamVR_Action_Boolean clickAction;
@@ -183,6 +184,7 @@ public class GameController : MonoBehaviour
         cameraBlack.enabled = true;
 
         hourglass.SetActive(false);
+        cross.SetActive(false);
 
         //Sets text to trial type
         if(experimentType[experimentNumber - 1] == 'L')
@@ -245,6 +247,7 @@ public class GameController : MonoBehaviour
         if(experimentType[experimentNumber - 1] == 'L')
         {
             pointer.GetComponent<Pointer>().type = 'L';
+            cross.SetActive(true);
         }
         
         else

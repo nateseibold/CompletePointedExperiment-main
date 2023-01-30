@@ -35,7 +35,7 @@ public class positionalData : MonoBehaviour
         application_Path = application_Path + "/Results/" + "headData" + id + ".txt";
         m_Path = application_Path;
 
-        string header = "Time,Subject ID,Trial Number,Trial Type,Actual Travel Time,Perceived Travel Time,Actual Start Point,Participant Start Point,Actual End Point,Participant End Point,Distance betweeen Actual and Participant Start,Distance between Actual and Participant End";
+        string header = "Time,Subject ID,Trial Number,Trial Type,Actual Travel Time,Perceived Travel Time,Distance Between Actual Start and End Points,Distance Between Player Start and End Points,Actual Start Point,Participant Start Point,Actual End Point,Participant End Point,Distance betweeen Actual and Participant Start,Distance between Actual and Participant End";
         StreamWriter writer8 = new StreamWriter(m_Path, true);
         writer8.WriteLine(header);
         writer8.Close();
@@ -59,10 +59,12 @@ public class positionalData : MonoBehaviour
             Vector3 startPlayer = pointer.GetComponent<Pointer>().startClick;
             Vector3 endActual = GetComponent<GameController>().endingPoint.transform.position;
             Vector3 endPlayer = pointer.GetComponent<Pointer>().endClick;
+            float actualDistance = Vector3.Distance(startActual, endActual);
+            float playerDistance = Vector3.Distance(startPlayer, endPlayer);
             float startDistance = Vector3.Distance(startActual, startPlayer);
             float endDistance = Vector3.Distance(endActual, endPlayer);
 
-            dataTracked = cur_time.ToString("n0").Replace("," , "") + "," + id + "," + trialNumber + "," + trial + "," + time + "," + duration + "," + startActual +  "," + startPlayer + "," + endActual + "," + endPlayer + "," + startDistance + "," + endDistance + "\n";
+            dataTracked = cur_time.ToString("n0").Replace(",", "") + "," + id + "," + trialNumber + "," + trial + "," + time + "," + duration + "," + actualDistance + "," + playerDistance + "," + startActual +  "," + startPlayer + "," + endActual + "," + endPlayer + "," + startDistance + "," + endDistance + "\n";
         }
         else if(type == 'T')
         {
@@ -75,10 +77,12 @@ public class positionalData : MonoBehaviour
             string startPlayer = "-";
             Vector3 endActual = GetComponent<GameController>().endingPoint.transform.position;
             string endPlayer = "-";
+            float actualDistance = Vector3.Distance(startActual, endActual);
+            string playerDistance = "-";
             string startDistance = "-";
             string endDistance = "-";
 
-            dataTracked = cur_time.ToString("n0").Replace("," , "") + "," + id + "," + trialNumber + "," + trial + "," + time + "," + duration + "," + startActual +  "," + startPlayer + "," + endActual + "," + endPlayer + "," + startDistance + "," + endDistance + "\n";
+            dataTracked = cur_time.ToString("n0").Replace(",", "") + "," + id + "," + trialNumber + "," + trial + "," + time + "," + duration + "," + actualDistance + "," + playerDistance + "," + startActual + "," + startPlayer + "," + endActual + "," + endPlayer + "," + startDistance + "," + endDistance + "\n";
         }
         StreamWriter writer8 = new StreamWriter(m_Path, true);
         writer8.WriteLine(dataTracked);

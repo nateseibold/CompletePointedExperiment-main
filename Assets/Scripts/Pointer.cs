@@ -59,19 +59,19 @@ public class Pointer : MonoBehaviour
 
         if(type == 'L')
         {
-            if(clickAction.GetState(targetSource) && numClicks == 0)
+            if(clickAction.GetStateDown(targetSource) && numClicks == 0)
             {
                 startClick = endPosition;
-                Instantiate(line, endPosition, line.transform.rotation);
+                //Instantiate(line, endPosition, line.transform.rotation);
                 numClicks++;
             }
 
-            else if(numClicks == 1)
-            {
-                Instantiate(line, endPosition, line.transform.rotation);
-            }
+            //else if(numClicks == 1)
+            //{
+            //    Instantiate(line, endPosition, line.transform.rotation);
+            //}
 
-            else if(clickAction.GetStateUp(targetSource))
+            else if(clickAction.GetStateDown(targetSource) && numClicks == 1)
             {
                 endClick = endPosition;
                 numClicks = 0;
@@ -88,13 +88,13 @@ public class Pointer : MonoBehaviour
 
         else if(type == 'T')
         {
-            if(clickAction.GetState(targetSource) && numClicks == 0)
+            if(clickAction.GetStateDown(targetSource) && numClicks == 0)
             {
                 stopwatch.Start();
                 numClicks++;
             }
 
-            if(clickAction.GetStateUp(targetSource))
+            if(clickAction.GetStateDown(targetSource))
             {
                 stopwatch.Stop();
                 duration = stopwatch.Elapsed.Milliseconds / 100;

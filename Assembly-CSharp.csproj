@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\MoveBallArc.cs" />
     <Compile Include="Assets\Scripts\positionalData.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\MoveWithCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
